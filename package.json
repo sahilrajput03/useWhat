@@ -4,9 +4,9 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
-		"start": "c && npm version patch && p",
-		"start1": "c && npm version minor && p",
-		"start2": "c && npm version major && p",
+		"start": "c && yarn version --patch && p",
+		"start1": "c && yarn version --minor && p",
+		"start2": "c && yarn version --major && p",
 		"test": "echo \"Error: no test specified.\" && exit 1"
 	},
 	"dependencies": {
