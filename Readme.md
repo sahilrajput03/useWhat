@@ -37,7 +37,6 @@ export default function App() {
   const [kitchen, setKitchen] = useWhat('kitchen', initialKitchenState);
   return (
     <div className="App">
-      <h1>Hello CodeSandbox</h1>
       <h2>App component</h2>
       <Pretty data={home} />
       <Pretty data={kitchen} />
@@ -50,43 +49,29 @@ const PARENT_COMPONENT = () => {
   const [home, setHome] = useWhat('home');
   const [kitchen, setKitchen] = useWhat('kitchen');
 
+  const incrementHome = () => setHome({rooms: home.rooms + 1});
+
+  const incrementKitchen = () => setKitchen({cups: kitchen.cups + 1});
+
+  const incrementHomeBy2 = () =>
+    setHome((state) => ({
+      rooms: state.rooms + 2
+    }));
+
+  const incrementKitchenBy2 = () =>
+    setKitchen((state) => ({cups: state.cups + 2}));
+
   return (
     <div>
       <hr />
       <h3>Parent Component</h3>
       <Pretty data={home} />
       <Pretty data={kitchen} />
-      <button
-        onClick={() => {
-          setHome({rooms: home.rooms + 1});
-        }}
-      >
-        Increment stateHome
-      </button>
-      <button
-        onClick={() => {
-          setKitchen({cups: kitchen.cups + 1});
-        }}
-      >
-        Increment stateKitchen
-      </button>
+      <button onClick={incrementHome}>Increment stateHome</button>
+      <button onClick={incrementKitchen}>Increment stateKitchen</button>
       <br />
-      <button
-        onClick={() => {
-          setHome((state) => ({
-            rooms: state.rooms + 2
-          }));
-        }}
-      >
-        Increment stateHome by 2
-      </button>
-      <button
-        onClick={() => {
-          setKitchen((state) => ({cups: state.cups + 2}));
-        }}
-      >
-        Increment stateKitchen by 2
-      </button>
+      <button onClick={incrementHomeBy2}>Increment stateHome by 2</button>
+      <button onClick={incrementKitchenBy2}>Increment stateKitchen by 2</button>
       <hr />
       <CHILD_COMPONENT />
     </div>
@@ -97,42 +82,28 @@ const CHILD_COMPONENT = () => {
   const [home, setHome] = useWhat('home');
   const [kitchen, setKitchen] = useWhat('kitchen');
 
+  const incrementHome = () => setHome({rooms: home.rooms + 1});
+
+  const incrementKitchen = () => setKitchen({cups: kitchen.cups + 1});
+
+  const incrementHomeBy2 = () =>
+    setHome((state) => ({
+      rooms: state.rooms + 2
+    }));
+
+  const incrementKitchenBy2 = () =>
+    setKitchen((state) => ({cups: state.cups + 2}));
+
   return (
     <div>
       <h4>Child Component</h4>
       <Pretty data={home} />
       <Pretty data={kitchen} />
-      <button
-        onClick={() => {
-          setHome({rooms: home.rooms + 1});
-        }}
-      >
-        Increment stateHome
-      </button>
-      <button
-        onClick={() => {
-          setKitchen({cups: kitchen.cups + 1});
-        }}
-      >
-        Increment stateKitchen
-      </button>
+      <button onClick={incrementHome}>Increment stateHome</button>
+      <button onClick={incrementKitchen}>Increment stateKitchen</button>
       <br />
-      <button
-        onClick={() => {
-          setHome((state) => ({
-            rooms: state.rooms + 2
-          }));
-        }}
-      >
-        Increment stateHome by 2
-      </button>
-      <button
-        onClick={() => {
-          setKitchen((state) => ({cups: state.cups + 2}));
-        }}
-      >
-        Increment stateKitchen by 2
-      </button>
+      <button onClick={incrementHomeBy2}>Increment stateHome by 2</button>
+      <button onClick={incrementKitchenBy2}>Increment stateKitchen by 2</button>
     </div>
   );
 };
