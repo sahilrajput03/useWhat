@@ -18,7 +18,7 @@ npm i usewhat
 
 ## Examples
 
-[**Below example on codesandbox 🔥**]()
+[**Below example on codesandbox 🔥**](https://codesandbox.io/s/usewhat-example-for-npmjscom-1fopu?file=/src/App.js)
 
 ```js
 import React, {useEffect} from 'react';
