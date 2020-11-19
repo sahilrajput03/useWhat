@@ -30,15 +30,32 @@ let log = console.log;
 const initialHomeState = {rooms: 10};
 const initialKitchenState = {cups: 200};
 
+const Pretty = ({data}) => <pre>{JSON.stringify(data)}</pre>;
+
 export default function App() {
   const [home, setHome] = useWhat('home', initialHomeState);
   const [kitchen, setKitchen] = useWhat('kitchen', initialKitchenState);
-
   return (
     <div className="App">
       <h1>Hello CodeSandbox</h1>
-      stateHome: {home.rooms} <br />
-      stateKitchen: {kitchen.cups} <br />
+      <h2>App component</h2>
+      <Pretty data={home} />
+      <Pretty data={kitchen} />
+      <PARENT_COMPONENT />
+    </div>
+  );
+}
+
+const PARENT_COMPONENT = () => {
+  const [home, setHome] = useWhat('home');
+  const [kitchen, setKitchen] = useWhat('kitchen');
+
+  return (
+    <div>
+      <hr />
+      <h3>Parent Component</h3>
+      <Pretty data={home} />
+      <Pretty data={kitchen} />
       <button
         onClick={() => {
           setHome({rooms: home.rooms + 1});
@@ -71,24 +88,20 @@ export default function App() {
         Increment stateKitchen by 2
       </button>
       <hr />
-      <ChildComponent />
+      <CHILD_COMPONENT />
     </div>
   );
-}
+};
 
-const ChildComponent = () => {
+const CHILD_COMPONENT = () => {
   const [home, setHome] = useWhat('home');
   const [kitchen, setKitchen] = useWhat('kitchen');
-
-  useEffect(() => {
-    return log('un-mounted');
-  }, []);
 
   return (
     <div>
       <h4>Child Component</h4>
-      stateHome: {home.rooms} <br />
-      stateKitchen: {kitchen.cups} <br />
+      <Pretty data={home} />
+      <Pretty data={kitchen} />
       <button
         onClick={() => {
           setHome({rooms: home.rooms + 1});
@@ -123,4 +136,5 @@ const ChildComponent = () => {
     </div>
   );
 };
+
 ```
