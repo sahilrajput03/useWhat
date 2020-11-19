@@ -34,7 +34,10 @@ const Pretty = ({data}) => <pre>{JSON.stringify(data)}</pre>;
 
 export default function App() {
   const [home, setHome] = useWhat('home', initialHomeState);
+    // Initializing `home` namespace with initial data as second parameter.
   const [kitchen, setKitchen] = useWhat('kitchen', initialKitchenState);
+    // Initializing `kitchen` namespace with initial data as second parameter.
+
   return (
     <div className="App">
       <h2>App component</h2>
@@ -46,6 +49,7 @@ export default function App() {
 }
 
 const PARENT_COMPONENT = () => {
+  // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
   const [home, setHome] = useWhat('home');
   const [kitchen, setKitchen] = useWhat('kitchen');
 
@@ -79,6 +83,7 @@ const PARENT_COMPONENT = () => {
 };
 
 const CHILD_COMPONENT = () => {
+  // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
   const [home, setHome] = useWhat('home');
   const [kitchen, setKitchen] = useWhat('kitchen');
 
