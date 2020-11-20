@@ -18,7 +18,11 @@ npm i usewhat
 
 ## Examples
 
+### Example 1
+
 [**Below example on codesandbox 🔥**](https://codesandbox.io/s/usewhat-example-for-npmjscom-1fopu?file=/src/App.js)
+
+Tip: I have used `initialState`, but you may use `null` as the initial state directly too, so it won't hurt if you don't have the initial state(possibly you'll get it via fetching ☂️).
 
 ```js
 import React, {useEffect} from 'react';
@@ -109,6 +113,48 @@ const CHILD_COMPONENT = () => {
       <br />
       <button onClick={incrementHomeBy2}>Increment stateHome by 2</button>
       <button onClick={incrementKitchenBy2}>Increment stateKitchen by 2</button>
+    </div>
+  );
+};
+
+```
+
+### Example 2
+
+[**Below example on codesandbox 🔥**](https://codesandbox.io/s/usewhat-example2-fetching-npmjscom-nkm6c?file=/src/App.js)
+
+```
+import React, {useEffect} from 'react';
+import './styles.css';
+import axios from 'axios';
+import {useWhat} from 'usewhat';
+
+let log = console.log;
+
+export default function App() {
+  const [github, setGithub] = useWhat('gh', null);
+
+  useEffect(() => {
+    axios
+      .get('https://api.github.com')
+      .then((res) => setGithub(res.data))
+      .catch((e) => log('#got error#', e));
+  }, [setGithub]);
+
+  return (
+    <div className="App">
+      <ChildComponent />
+    </div>
+  );
+}
+
+const ChildComponent = () => {
+  const [github, setGithub] = useWhat('gh');
+
+  return (
+    <div>
+      <h2>Child Component</h2>
+      <pre>{JSON.stringify(github, null, 2)}</pre>
     </div>
   );
 };
