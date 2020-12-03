@@ -59,8 +59,8 @@ export default function App() {
 
 const PARENT_COMPONENT = () => {
   // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
-  const [home, setHome] = useWhat('home');
-  const [kitchen, setKitchen] = useWhat('kitchen');
+  const [home, setHome] = getWhat('home');
+  const [kitchen, setKitchen] = getWhat('kitchen');
 
   const incrementHome = () => setHome({rooms: home.rooms + 1});
 
