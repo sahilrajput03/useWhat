@@ -32,7 +32,7 @@ Tip: I have used `initialState`, but you may use `null` as the initial state dir
 ```js
 import React, {useEffect} from 'react';
 import './styles.css';
-import {useWhat} from 'usewhat';
+import {useWhat, getWhat} from 'usewhat';
 
 let log = console.log;
 
@@ -93,8 +93,8 @@ const PARENT_COMPONENT = () => {
 
 const CHILD_COMPONENT = () => {
   // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
-  const [home, setHome] = useWhat('home');
-  const [kitchen, setKitchen] = useWhat('kitchen');
+  const [home, setHome] = getWhat('home');
+  const [kitchen, setKitchen] = getWhat('kitchen');
 
   const incrementHome = () => setHome({rooms: home.rooms + 1});
 
@@ -132,7 +132,7 @@ const CHILD_COMPONENT = () => {
 import React, {useEffect} from 'react';
 import './styles.css';
 import axios from 'axios';
-import {useWhat} from 'usewhat';
+import {useWhat, getWhat} from 'usewhat';
 
 let log = console.log;
 
@@ -154,7 +154,7 @@ export default function App() {
 }
 
 const ChildComponent = () => {
-  const [github, setGithub] = useWhat('gh');
+  const [github, setGithub] = getWhat('gh');
 
   return (
     <div>
