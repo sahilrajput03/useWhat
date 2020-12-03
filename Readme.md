@@ -25,7 +25,7 @@ So, does it any matter that where we initialize the `namespace` we got to be car
 
 ### Example 1
 
-[**Below example on codesandbox 🔥**](https://codesandbox.io/s/usewhat-example-for-npmjscom-1fopu?file=/src/App.js)
+[**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-example-for-npmjscom-1fopu?file=/src/App.js)
 
 Tip: I have used `initialState`, but you may use `null` as the initial state directly too, so it won't hurt if you don't have the initial state(possibly you'll get it via fetching ☂️).
 
@@ -135,7 +135,7 @@ const incrementKitchenBy2 = () => {
 
 ### Example 2
 
-[**Below example on codesandbox 🔥**](https://codesandbox.io/s/usewhat-example2-fetching-npmjscom-nkm6c?file=/src/App.js)
+[**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-example2-fetching-npmjscom-nkm6c?file=/src/App.js)
 
 ```js
 import React, {useEffect} from 'react';
