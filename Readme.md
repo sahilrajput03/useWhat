@@ -153,15 +153,44 @@ export default function App() {
   );
 }
 
-const ChildComponent = () => {
-  const [github, setGithub] = getWhat('gh');
+const CHILD_COMPONENT = () => {
+  // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
+  const [home, setHome] = getWhat('home');
+  const [kitchen, setKitchen] = getWhat('kitchen');
 
   return (
     <div>
-      <h2>Child Component</h2>
-      <pre>{JSON.stringify(github, null, 2)}</pre>
+      <h4>Child Component</h4>
+      <Pretty data={home} />
+      <Pretty data={kitchen} />
+      <button onClick={incrementHome}>Increment stateHome</button>
+      <button onClick={incrementKitchen}>Increment stateKitchen</button>
+      <br />
+      <button onClick={incrementHomeBy2}>Increment stateHome by 2</button>
+      <button onClick={incrementKitchenBy2}>Increment stateKitchen by 2</button>
     </div>
   );
 };
 
+const incrementHome = () => {
+  const [home, setHome] = getWhat('home');
+  setHome({rooms: home.rooms + 1});
+};
+
+const incrementKitchen = () => {
+  const [kitchen, setKitchen] = getWhat('kitchen');
+  setKitchen({cups: kitchen.cups + 1});
+};
+
+const incrementHomeBy2 = () => {
+  const [home, setHome] = getWhat('home');
+  setHome((state) => ({
+    rooms: state.rooms + 2
+  }));
+};
+
+const incrementKitchenBy2 = () => {
+  const [kitchen, setKitchen] = getWhat('kitchen');
+  setKitchen((state) => ({cups: state.cups + 2}));
+};
 ```
