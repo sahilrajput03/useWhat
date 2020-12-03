@@ -128,7 +128,7 @@ const CHILD_COMPONENT = () => {
 
 [**Below example on codesandbox 🔥**](https://codesandbox.io/s/usewhat-example2-fetching-npmjscom-nkm6c?file=/src/App.js)
 
-```
+```js
 import React, {useEffect} from 'react';
 import './styles.css';
 import axios from 'axios';
