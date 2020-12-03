@@ -1,3 +1,4 @@
+A DECLARATIVE APPROACH FOR GLOBAL STATE IN A LESS IMPERTAIVE REACT ECOSYSTEM.
 # `useWhat` - global state management solution
 
 MOST ASKED QUESTION 😴 :
@@ -15,6 +16,10 @@ yarn add usewhat
 # or
 npm i usewhat
 ````
+
+## Discussions not worth ?
+
+So, does it any matter that where we initialize the `namespace` we got to be careful that only the components below in that tree will be able to access and call `setState` for that particular `namespace`. So its very intutive that you must initialize the state at the very top component as possible(though it won't hurt you in any way). For e.g., you can set `state` of a namespace at initial mount of a child component in the component tree using simple `useEffect(() => {},[])`, so it just a reminder that initializing the state at the apex of tree would never hurt but is the key to how to manage global state.
 
 ## Examples
 

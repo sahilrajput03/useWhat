@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import {useState} from "react";
+import { useState } from "react";
 
 let _stateGlobal = [{}, {}];
 let log = console.log;
@@ -8,9 +8,14 @@ function capitalizeFirstLetter(string) {
 	return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
+export const getWhat = (storeName) => {
+	const [stateGlobal, setStateGlobal] = _stateGlobal;
+	return [stateGlobal[storeName], setStateGlobal[storeName]];
+};
+
 export const useWhat = (storeName, val) => {
 	// export const useStore = (storeName, val) => {
-	const _state = useState({[storeName]: val});
+	const _state = useState({ [storeName]: val });
 	const [state, setState] = _state;
 	const [stateGlobal, setStateGlobal] = _stateGlobal;
 
@@ -26,7 +31,7 @@ export const useWhat = (storeName, val) => {
 				}));
 			}
 
-			return setState({[storeName]: input});
+			return setState({ [storeName]: input });
 		};
 	} else if (!setStateGlobal[storeName]) {
 		throw new Error(
