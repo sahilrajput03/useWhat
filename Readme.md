@@ -93,20 +93,8 @@ const PARENT_COMPONENT = () => {
 
 const CHILD_COMPONENT = () => {
   // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
-  const [home, setHome] = getWhat('home');
-  const [kitchen, setKitchen] = getWhat('kitchen');
-
-  const incrementHome = () => setHome({rooms: home.rooms + 1});
-
-  const incrementKitchen = () => setKitchen({cups: kitchen.cups + 1});
-
-  const incrementHomeBy2 = () =>
-    setHome((state) => ({
-      rooms: state.rooms + 2
-    }));
-
-  const incrementKitchenBy2 = () =>
-    setKitchen((state) => ({cups: state.cups + 2}));
+  const [home, _] = getWhat('home');
+  const [kitchen, __] = getWhat('kitchen');
 
   return (
     <div>
@@ -122,6 +110,27 @@ const CHILD_COMPONENT = () => {
   );
 };
 
+const incrementHome = () => {
+  const [home, setHome] = getWhat('home');
+  setHome({rooms: home.rooms + 1});
+};
+
+const incrementKitchen = () => {
+  const [kitchen, setKitchen] = getWhat('kitchen');
+  setKitchen({cups: kitchen.cups + 1});
+};
+
+const incrementHomeBy2 = () => {
+  const [_, setHome] = getWhat('home');
+  setHome((state) => ({
+    rooms: state.rooms + 2
+  }));
+};
+
+const incrementKitchenBy2 = () => {
+  const [_, setKitchen] = getWhat('kitchen');
+  setKitchen((state) => ({cups: state.cups + 2}));
+};
 ```
 
 ### Example 2
@@ -153,44 +162,14 @@ export default function App() {
   );
 }
 
-const CHILD_COMPONENT = () => {
-  // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
-  const [home, setHome] = getWhat('home');
-  const [kitchen, setKitchen] = getWhat('kitchen');
+const ChildComponent = () => {
+  const [github, setGithub] = getWhat('gh');
 
   return (
     <div>
-      <h4>Child Component</h4>
-      <Pretty data={home} />
-      <Pretty data={kitchen} />
-      <button onClick={incrementHome}>Increment stateHome</button>
-      <button onClick={incrementKitchen}>Increment stateKitchen</button>
-      <br />
-      <button onClick={incrementHomeBy2}>Increment stateHome by 2</button>
-      <button onClick={incrementKitchenBy2}>Increment stateKitchen by 2</button>
+      <h2>Child Component</h2>
+      <pre>{JSON.stringify(github, null, 2)}</pre>
     </div>
   );
-};
-
-const incrementHome = () => {
-  const [home, setHome] = getWhat('home');
-  setHome({rooms: home.rooms + 1});
-};
-
-const incrementKitchen = () => {
-  const [kitchen, setKitchen] = getWhat('kitchen');
-  setKitchen({cups: kitchen.cups + 1});
-};
-
-const incrementHomeBy2 = () => {
-  const [home, setHome] = getWhat('home');
-  setHome((state) => ({
-    rooms: state.rooms + 2
-  }));
-};
-
-const incrementKitchenBy2 = () => {
-  const [kitchen, setKitchen] = getWhat('kitchen');
-  setKitchen((state) => ({cups: state.cups + 2}));
 };
 ```
