@@ -17,12 +17,15 @@ export const getWhat = (storeName) => {
 export const useWhat = (storeName, val, localStorageBoolean) => {
 	let _state1 = useState({ [storeName]: val });
 	let _state2 = useLocalStorage(storeName, { [storeName]: val });
+	let _state;
 	if (localStorageBoolean) {
 		_state = _state2;
 	} else {
 		_state = _state1;
 	}
-	const [state, setState] = _state;
+	const state = _state.state;
+	const setState = _state.setState;
+	// const [, setState] = _state;
 	const [stateGlobal, setStateGlobal] = _stateGlobal;
 
 	if (val !== undefined) {
