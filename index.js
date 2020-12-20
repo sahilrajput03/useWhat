@@ -45,8 +45,8 @@ export const useWhat = (storeName, val) => {
 	return [stateGlobal[storeName], setStateGlobal[storeName]];
 };
 
-export const useWhatPersistent = useLocalStorage(storeName, val) => {
-	let _state = ({ [storeName]: val });
+export const useWhatPersistent = (storeName, val) => {
+	let _state = useLocalStorage({ [storeName]: val });
 
 	const [state, setState] = _state;
 	const [stateGlobal, setStateGlobal] = _stateGlobal;
