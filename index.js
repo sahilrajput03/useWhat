@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState } from "react";
+import { useLocalStorage } from "./useLocalStorage";
 
 let _stateGlobal = [{}, {}];
 let log = console.log;
