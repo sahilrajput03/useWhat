@@ -14,7 +14,7 @@ export const getWhat = (storeName) => {
 };
 
 export const useWhat = (storeName, val, localStorageBoolean) => {
-		let state
+		let _state
 	if(localStorageBoolean) {
 		_state = useLocalStorage(storeName,{ [storeName]: val })
 	}else {
