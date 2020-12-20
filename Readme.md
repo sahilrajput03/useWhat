@@ -23,6 +23,11 @@ So, does it any matter that where we initialize the `namespace` we got to be car
 
 ## Examples
 
+* New feature added for support of making use of localStorage for react(not available for react native for now):
+
+`const [db, setDb] = useWhat('db', 'one', true)`
+Here, the third parameter(i.e., `true`) would define that everytime `setDb` is called it'll also store `db` value to `localStorage` with key as `db` too. Also, now the hook on component mount checks if the localStorage has values from earlier sessions and if so make use of that. Yikes!!!
+
 ### Example 1
 
 [**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-example-for-npmjscom-1fopu?file=/src/App.js)
