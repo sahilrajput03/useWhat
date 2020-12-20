@@ -13,9 +13,13 @@ export const getWhat = (storeName) => {
 	return [stateGlobal[storeName], setStateGlobal[storeName]];
 };
 
-export const useWhat = (storeName, val) => {
-	// export const useStore = (storeName, val) => {
-	const _state = useState({ [storeName]: val });
+export const useWhat = (storeName, val, localStorageBoolean) => {
+		let state
+	if(localStorageBoolean) {
+		_state = useLocalStorage(storeName,{ [storeName]: val })
+	}else {
+		_state = useState({ [storeName]: val });
+	}
 	const [state, setState] = _state;
 	const [stateGlobal, setStateGlobal] = _stateGlobal;
 
