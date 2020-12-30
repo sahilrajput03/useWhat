@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "cpn && yarn version --patch",
+    "start": "yarn version --patch && cpn && yarn publish ",
     "start0": "c && yarn version --patch && p",
     "start1": "c && yarn version --minor && p",
     "start2": "c && yarn version --major && p",
