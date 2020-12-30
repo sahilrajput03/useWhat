@@ -3,7 +3,7 @@ A DECLARATIVE APPROACH FOR GLOBAL STATE IN A LESS IMPERTAIVE REACT ECOSYSTEM.
 
 #### Changelog:
 
-- version 1.0.17 includes good namings for if statements and all readable code alterations for conditions, and if else, separations to simple independent if statements with conditions. Yikes!!
+- version 1.0.17 includes good namings for if statements and all readable code alterations for conditions, and if else, separations to simple independent if statements with conditions. Yikes!! Also, includes using testing flag (having_val = true) in production, yikes, and now we can have 0 errors like using useWhat('mykey') will create initialValue as undefined just like react does with useState() i.e., calling with no params.
 
 - version 1.0.19 brings you the facility to specify **setState as dependency** for **useEffect** hook safely (without getting into infinite render loop).
 
