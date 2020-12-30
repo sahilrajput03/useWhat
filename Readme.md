@@ -1,7 +1,11 @@
 A DECLARATIVE APPROACH FOR GLOBAL STATE IN A LESS IMPERTAIVE REACT ECOSYSTEM.
 # `useWhat` - global state management solution
 
-#### Changelog: version 1.0.17 includes good namings for if statements and all readable code alterations for conditions, and if else, separations to simple independent if statements with conditions. Yikes!!
+#### Changelog:
+
+- version 1.0.17 includes good namings for if statements and all readable code alterations for conditions, and if else, separations to simple independent if statements with conditions. Yikes!!
+
+- version 1.0.19 brings you the facility to specify **setState as dependency** for **useEffect** hook safely (without getting into infinite render loop).
 
 MOST ASKED QUESTION 😴 :
 
