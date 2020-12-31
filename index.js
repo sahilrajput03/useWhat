@@ -5,7 +5,7 @@ import {myError} from "./utils";
 
 let _stateGlobal = [{}, {}];
 const [stateGlobal, setStateGlobal] = _stateGlobal;
-let log = console.log;
+export const log = console.log;
 
 export const getWhat = (storeName) => {
   return [stateGlobal[storeName], setStateGlobal[storeName]];
@@ -93,5 +93,3 @@ export const useWhatPersistent = (storeName, val) => {
 
   return [stateGlobal[storeName], setStateGlobal[storeName]];
 };
-
-export const log = console.log
