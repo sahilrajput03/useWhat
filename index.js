@@ -93,3 +93,5 @@ export const useWhatPersistent = (storeName, val) => {
 
   return [stateGlobal[storeName], setStateGlobal[storeName]];
 };
+
+export const log = console.log
