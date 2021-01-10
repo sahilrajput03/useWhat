@@ -35,7 +35,7 @@ const App = () => {
 
 [**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-example-for-npmjscom-1fopu?file=/src/App.js)
 
-Tip: I have used `initialState`, but you may simply call `useWhat("home")` and that'll set the initial state as `undefined` too (this is same ☂️ as using `const [state, setState] = useState()`).
+Tip: In below example, I have used `initialState` (in line `const [home, setHome] = useWhat("home", initialHomeState);`), but you may simply call `const [home, setHome] = useWhat("home")` and that'll set the initial state as `undefined` (this is same ☂️ as using `const [state, setState] = useState()` in general react).
 
 ```js
 import React, {useEffect} from "react";
