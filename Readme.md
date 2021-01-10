@@ -1,11 +1,4 @@
-A DECLARATIVE APPROACH FOR GLOBAL STATE IN A LESS IMPERTAIVE REACT ECOSYSTEM.
 # `useWhat` - global state management solution
-
-#### Changelog:
-
-- version 1.0.17 includes good namings for if statements and all readable code alterations for conditions, and if else, separations to simple independent if statements with conditions. Yikes!! Also, includes using testing flag (having_val = true) in production, yikes, and now we can have 0 errors like using useWhat('mykey') will create initialValue as undefined just like react does with useState() i.e., calling with no params.
-
-- version 1.0.19 brings you the facility to specify **setState as dependency** for **useEffect** hook safely (without getting into infinite render loop).
 
 MOST ASKED QUESTION 😴 :
 
@@ -21,30 +14,26 @@ MOST ASKED QUESTION 😴 :
 yarn add usewhat
 # or
 npm i usewhat
-````
-
-## Discussions not worth ?
-
-So, does it any matter that where we initialize the `namespace` we got to be careful that only the components below in that tree will be able to access and call `setState` for that particular `namespace`. So its very intutive that you must initialize the state at the very top component as possible(though it won't hurt you in any way). For e.g., you can set `state` of a namespace at initial mount of a child component in the component tree using simple `useEffect(() => {},[])`, so it just a reminder that initializing the state at the apex of tree would never hurt but is the key to how to manage global state.
+```
 
 ## Examples
 
-* New feature added for support of making use of localStorage for react(not available for react native for now):
+- New feature added for support of making use of localStorage for react(not available for react native for now):
 
 `const [db, setDb] = useWhatPersistent('db', 'one')`
 
- This will also take care of information if you a kind of person who wants to see older content even after a page reload.
+This will also take care of information if you a kind of person who wants to see older content even after a page reload.
 
 ### Example 1
 
 [**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-example-for-npmjscom-1fopu?file=/src/App.js)
 
-Tip: I have used `initialState`, but you may use `null` as the initial state directly too, so it won't hurt if you don't have the initial state(possibly you'll get it via fetching ☂️).
+Tip: I have used `initialState`, but you may simply call `useWhat("home")` and that'll set the initial state as `undefined` too (this is same ☂️ as using `const [state, setState] = useState()`).
 
 ```js
-import React, {useEffect} from 'react';
-import './styles.css';
-import {useWhat, getWhat} from 'usewhat';
+import React, {useEffect} from "react";
+import "./styles.css";
+import {useWhat, getWhat} from "usewhat";
 
 let log = console.log;
 
@@ -54,10 +43,10 @@ const initialKitchenState = {cups: 200};
 const Pretty = ({data}) => <pre>{JSON.stringify(data)}</pre>;
 
 export default function App() {
-  const [home, setHome] = useWhat('home', initialHomeState);
-    // Initializing `home` namespace with initial data as second parameter.
-  const [kitchen, setKitchen] = useWhat('kitchen', initialKitchenState);
-    // Initializing `kitchen` namespace with initial data as second parameter.
+  const [home, setHome] = useWhat("home", initialHomeState);
+  // Initializing `home` namespace with initial data as second parameter.
+  const [kitchen, setKitchen] = useWhat("kitchen", initialKitchenState);
+  // Initializing `kitchen` namespace with initial data as second parameter.
 
   return (
     <div className="App">
@@ -71,8 +60,8 @@ export default function App() {
 
 const PARENT_COMPONENT = () => {
   // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
-  const [home, setHome] = getWhat('home');
-  const [kitchen, setKitchen] = getWhat('kitchen');
+  const [home, setHome] = getWhat("home");
+  const [kitchen, setKitchen] = getWhat("kitchen");
 
   const incrementHome = () => setHome({rooms: home.rooms + 1});
 
@@ -80,7 +69,7 @@ const PARENT_COMPONENT = () => {
 
   const incrementHomeBy2 = () =>
     setHome((state) => ({
-      rooms: state.rooms + 2
+      rooms: state.rooms + 2,
     }));
 
   const incrementKitchenBy2 = () =>
@@ -105,8 +94,8 @@ const PARENT_COMPONENT = () => {
 
 const CHILD_COMPONENT = () => {
   // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
-  const [home, _] = getWhat('home');
-  const [kitchen, __] = getWhat('kitchen');
+  const [home, _] = getWhat("home");
+  const [kitchen, __] = getWhat("kitchen");
 
   return (
     <div>
@@ -123,24 +112,24 @@ const CHILD_COMPONENT = () => {
 };
 
 const incrementHome = () => {
-  const [home, setHome] = getWhat('home');
+  const [home, setHome] = getWhat("home");
   setHome({rooms: home.rooms + 1});
 };
 
 const incrementKitchen = () => {
-  const [kitchen, setKitchen] = getWhat('kitchen');
+  const [kitchen, setKitchen] = getWhat("kitchen");
   setKitchen({cups: kitchen.cups + 1});
 };
 
 const incrementHomeBy2 = () => {
-  const [_, setHome] = getWhat('home');
+  const [_, setHome] = getWhat("home");
   setHome((state) => ({
-    rooms: state.rooms + 2
+    rooms: state.rooms + 2,
   }));
 };
 
 const incrementKitchenBy2 = () => {
-  const [_, setKitchen] = getWhat('kitchen');
+  const [_, setKitchen] = getWhat("kitchen");
   setKitchen((state) => ({cups: state.cups + 2}));
 };
 ```
@@ -150,21 +139,21 @@ const incrementKitchenBy2 = () => {
 [**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-example2-fetching-npmjscom-nkm6c?file=/src/App.js)
 
 ```js
-import React, {useEffect} from 'react';
-import './styles.css';
-import axios from 'axios';
-import {useWhat, getWhat} from 'usewhat';
+import React, {useEffect} from "react";
+import "./styles.css";
+import axios from "axios";
+import {useWhat, getWhat} from "usewhat";
 
 let log = console.log;
 
 export default function App() {
-  const [github, setGithub] = useWhat('gh', null);
+  const [github, setGithub] = useWhat("gh", null);
 
   useEffect(() => {
     axios
-      .get('https://api.github.com')
+      .get("https://api.github.com")
       .then((res) => setGithub(res.data))
-      .catch((e) => log('#got error#', e));
+      .catch((e) => log("#got error#", e));
   }, [setGithub]);
 
   return (
@@ -175,7 +164,7 @@ export default function App() {
 }
 
 const ChildComponent = () => {
-  const [github, setGithub] = getWhat('gh');
+  const [github, setGithub] = getWhat("gh");
 
   return (
     <div>
