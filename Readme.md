@@ -18,11 +18,18 @@ npm i usewhat
 
 ## Examples
 
-- New feature added for support of making use of localStorage for react(not available for react native for now):
+- New feature added: useWhatPersistent.
 
-`const [db, setDb] = useWhatPersistent('db', 'one')`
+With `useWhatPersistent` api, you can have `state` to be stored in `localStorage` as well in app memory and state will get updated in `localStorage` as soon as `state` is updated. So when you close the tab or refresh the tab, state will persists in the app as it was in the app. (Support for `async-storage` in react native will follow up in upcoming version.)
 
-This will also take care of information if you a kind of person who wants to see older content even after a page reload.
+```js
+import {useWhatPersistent} from "usewhat";
+//...
+const App = () => {
+  const [db, setDb] = useWhatPersistent("db", "one");
+  //..
+};
+```
 
 ### Example 1
 
