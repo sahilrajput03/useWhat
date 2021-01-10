@@ -154,8 +154,8 @@ import {useWhat, getWhat} from "usewhat";
 let log = console.log;
 
 export default function App() {
-  const [github, setGithub] = useWhat("gh", null);
-
+  const [github, setGithub] = useWhat("gh");
+  // Initial state of `gh` namespace is set as `undefined` in this case.
   useEffect(() => {
     axios
       .get("https://api.github.com")
