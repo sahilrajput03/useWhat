@@ -1,20 +1,19 @@
 {
-  "name": "usewhat",
-  "version": "1.0.28",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "yarn version --patch && cpn && yarn publish ",
-    "start0": "c && yarn version --patch && p",
-    "start1": "c && yarn version --minor && p",
-    "start2": "c && yarn version --major && p",
-    "test": "echo \"Error: no test specified.\" && exit 1"
-  },
-  "dependencies": {},
-  "peerDependencies": {
-    "react": "^16.0.0 || ^17.0.0"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
+	"name": "usewhat",
+	"version": "1.0.28",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"prepub": "c Pre version commit.",
+		"pub": "yarn version --patch && yarn publish",
+		"postpub": "p",
+		"test": "echo \"Error: no test specified.\" && exit 1"
+	},
+	"dependencies": {},
+	"peerDependencies": {
+		"react": "^16.0.0 || ^17.0.0"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC"
 }
