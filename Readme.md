@@ -193,3 +193,99 @@ const ChildComponent = () => {
   );
 };
 ```
+
+### Example 3 - What not to do with useWhat? This is exactly what it is.
+
+[**(Beware this is about what not to do with `useWhat`) Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-bad-usagenpm-page-exapmle3-f7khu?file=/src/App.js)
+
+```js
+import React from "react";
+import "./styles.css";
+import {useWhat, getWhat} from "usewhat";
+
+export default function App() {
+  const [name, setName] = getWhat("person_name"); //initial state = undefined.
+  // *LEARN: Bad usage of `usewhat`, you must only intialise state
+  //  using `useWhat` api and use `getWhat` api in nested components in
+  // such component tree.
+  return (
+    <div className="App">
+      state: {name ?? "undefined"}
+      <br />
+      <button
+        onClick={() => {
+          setName("tom");
+        }}
+      >
+        Set name as "tom"
+      </button>
+      <br />
+      <ChildComponent />
+    </div>
+  );
+}
+
+const ChildComponent = () => {
+  const [name, setName] = useWhat("person_name", "jerry");
+  return (
+    <button
+      onClick={() => {
+        setName("jerry");
+      }}
+    >
+      Set name as 'jerry'
+    </button>
+  );
+};
+```
+
+### Example 4 (Correcting example 3)
+
+[**(This is correct version of Example 3) Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-bad-usage-fixed-npm-page-exapmle4-x26de?file=/src/App.js:0-921)
+
+```js
+import React, {useEffect, useRef} from "react";
+import "./styles.css";
+import {useWhat, getWhat, log} from "usewhat";
+
+export default function App() {
+  const [name, setName] = useWhat("person_name"); //initial state = undefined.
+  // *LEARN: Correct way of using useWhat.
+  return (
+    <div className="App">
+      state: {name ?? "undefined"}
+      <br />
+      <button
+        onClick={() => {
+          setName("tom");
+        }}
+      >
+        Set name as "tom"
+      </button>
+      <br />
+      <ChildComponent />
+    </div>
+  );
+}
+
+const ChildComponent = () => {
+  const [name, setName] = getWhat("person_name");
+
+  useEffect(() => {
+    setName("jerry");
+    // *LEARN: Correct way initializing state in a child component.
+  }, [setName]);
+
+  return (
+    <button
+      onClick={() => {
+        setName("jerry");
+      }}
+    >
+      Set name as 'jerry'
+    </button>
+  );
+};
+```
+
+Thanks, being here.
