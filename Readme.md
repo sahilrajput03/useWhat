@@ -23,10 +23,10 @@ npm i usewhat
 With `useWhatPersistent` api, you can have `state` to be stored in `localStorage` as well in app memory and state will get updated in `localStorage` as soon as `state` is updated. So when you close the tab or refresh the tab, state will persists in the app as it was in the app. (Support for `async-storage` in react native will follow up in upcoming version.)
 
 ```js
-import {useWhatPersistent} from "usewhat";
+import {useWhatPersistent} from 'usewhat';
 //...
 const App = () => {
-  const [db, setDb] = useWhatPersistent("db", "one");
+  const [db, setDb] = useWhatPersistent('db', 'one');
   //..
 };
 ```
@@ -38,21 +38,21 @@ s
 Tip: In below example, I have used `initialState` i.e.,
 
 ```js
-const [home, setHome] = useWhat("home", initialHomeState);
+const [home, setHome] = useWhat('home', initialHomeState);
 ```
 
 , but you may simply use `useWhat` api like
 
 ```js
-const [home, setHome] = useWhat("home");
+const [home, setHome] = useWhat('home');
 ```
 
 and that'll set the initial state as `undefined` (this is same ☂️ as using `const [home, setHome] = useState()` in general react).
 
 ```js
-import React, {useEffect} from "react";
-import "./styles.css";
-import {useWhat, getWhat} from "usewhat";
+import React, {useEffect} from 'react';
+import './styles.css';
+import {useWhat, getWhat} from 'usewhat';
 
 let log = console.log;
 
@@ -62,9 +62,9 @@ const initialKitchenState = {cups: 200};
 const Pretty = ({data}) => <pre>{JSON.stringify(data)}</pre>;
 
 export default function App() {
-  const [home, setHome] = useWhat("home", initialHomeState);
+  const [home, setHome] = useWhat('home', initialHomeState);
   // Initializing `home` namespace with initial data as second parameter.
-  const [kitchen, setKitchen] = useWhat("kitchen", initialKitchenState);
+  const [kitchen, setKitchen] = useWhat('kitchen', initialKitchenState);
   // Initializing `kitchen` namespace with initial data as second parameter.
 
   return (
@@ -79,8 +79,8 @@ export default function App() {
 
 const PARENT_COMPONENT = () => {
   // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
-  const [home, setHome] = getWhat("home");
-  const [kitchen, setKitchen] = getWhat("kitchen");
+  const [home, setHome] = getWhat('home');
+  const [kitchen, setKitchen] = getWhat('kitchen');
 
   const incrementHome = () => setHome({rooms: home.rooms + 1});
 
@@ -113,8 +113,8 @@ const PARENT_COMPONENT = () => {
 
 const CHILD_COMPONENT = () => {
   // Accessing earlier initialized namespaces i.e., `home` and `kitchen` in `App` component.
-  const [home, _] = getWhat("home");
-  const [kitchen, __] = getWhat("kitchen");
+  const [home, _] = getWhat('home');
+  const [kitchen, __] = getWhat('kitchen');
 
   return (
     <div>
@@ -131,24 +131,24 @@ const CHILD_COMPONENT = () => {
 };
 
 const incrementHome = () => {
-  const [home, setHome] = getWhat("home");
+  const [home, setHome] = getWhat('home');
   setHome({rooms: home.rooms + 1});
 };
 
 const incrementKitchen = () => {
-  const [kitchen, setKitchen] = getWhat("kitchen");
+  const [kitchen, setKitchen] = getWhat('kitchen');
   setKitchen({cups: kitchen.cups + 1});
 };
 
 const incrementHomeBy2 = () => {
-  const [_, setHome] = getWhat("home");
+  const [_, setHome] = getWhat('home');
   setHome((state) => ({
     rooms: state.rooms + 2,
   }));
 };
 
 const incrementKitchenBy2 = () => {
-  const [_, setKitchen] = getWhat("kitchen");
+  const [_, setKitchen] = getWhat('kitchen');
   setKitchen((state) => ({cups: state.cups + 2}));
 };
 ```
@@ -158,21 +158,21 @@ const incrementKitchenBy2 = () => {
 [**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-example2-fetching-npmjscom-nkm6c?file=/src/App.js)
 
 ```js
-import React, {useEffect} from "react";
-import "./styles.css";
-import axios from "axios";
-import {useWhat, getWhat} from "usewhat";
+import React, {useEffect} from 'react';
+import './styles.css';
+import axios from 'axios';
+import {useWhat, getWhat} from 'usewhat';
 
 let log = console.log;
 
 export default function App() {
-  const [github, setGithub] = useWhat("gh");
+  const [github, setGithub] = useWhat('gh');
   // Initial state of `gh` namespace is set as `undefined` in this case.
   useEffect(() => {
     axios
-      .get("https://api.github.com")
+      .get('https://api.github.com')
       .then((res) => setGithub(res.data))
-      .catch((e) => log("#got error#", e));
+      .catch((e) => log('#got error#', e));
   }, [setGithub]);
 
   return (
@@ -183,7 +183,7 @@ export default function App() {
 }
 
 const ChildComponent = () => {
-  const [github, setGithub] = getWhat("gh");
+  const [github, setGithub] = getWhat('gh');
 
   return (
     <div>
@@ -199,22 +199,22 @@ const ChildComponent = () => {
 [**(Beware this is about what not to do with `useWhat`) Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-bad-usagenpm-page-exapmle3-f7khu?file=/src/App.js)
 
 ```js
-import React from "react";
-import "./styles.css";
-import {useWhat, getWhat} from "usewhat";
+import React from 'react';
+import './styles.css';
+import {useWhat, getWhat} from 'usewhat';
 
 export default function App() {
-  const [name, setName] = getWhat("person_name"); //initial state = undefined.
+  const [name, setName] = getWhat('person_name'); //initial state = undefined.
   // *LEARN: Bad usage of `usewhat`, you must only intialise state
   //  using `useWhat` api and use `getWhat` api in nested components in
   // such component tree.
   return (
     <div className="App">
-      state: {name ?? "undefined"}
+      state: {name ?? 'undefined'}
       <br />
       <button
         onClick={() => {
-          setName("tom");
+          setName('tom');
         }}
       >
         Set name as "tom"
@@ -226,11 +226,11 @@ export default function App() {
 }
 
 const ChildComponent = () => {
-  const [name, setName] = useWhat("person_name", "jerry");
+  const [name, setName] = useWhat('person_name', 'jerry');
   return (
     <button
       onClick={() => {
-        setName("jerry");
+        setName('jerry');
       }}
     >
       Set name as 'jerry'
@@ -244,20 +244,20 @@ const ChildComponent = () => {
 [**(This is correct version of Example 3) Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/usewhat-bad-usage-fixed-npm-page-exapmle4-x26de?file=/src/App.js:0-921)
 
 ```js
-import React, {useEffect, useRef} from "react";
-import "./styles.css";
-import {useWhat, getWhat, log} from "usewhat";
+import React, {useEffect, useRef} from 'react';
+import './styles.css';
+import {useWhat, getWhat, log} from 'usewhat';
 
 export default function App() {
-  const [name, setName] = useWhat("person_name"); //initial state = undefined.
+  const [name, setName] = useWhat('person_name'); //initial state = undefined.
   // *LEARN: Correct way of using useWhat.
   return (
     <div className="App">
-      state: {name ?? "undefined"}
+      state: {name ?? 'undefined'}
       <br />
       <button
         onClick={() => {
-          setName("tom");
+          setName('tom');
         }}
       >
         Set name as "tom"
@@ -269,17 +269,17 @@ export default function App() {
 }
 
 const ChildComponent = () => {
-  const [name, setName] = getWhat("person_name");
+  const [name, setName] = getWhat('person_name');
 
   useEffect(() => {
-    setName("jerry");
+    setName('jerry');
     // *LEARN: Correct way initializing state in a child component.
   }, [setName]);
 
   return (
     <button
       onClick={() => {
-        setName("jerry");
+        setName('jerry');
       }}
     >
       Set name as 'jerry'
@@ -293,8 +293,8 @@ const ChildComponent = () => {
 [**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/example-4-usewhat-npmjs-package-readme-lpt9y?file=/src/App.js:83-126)
 
 ```js
-import React from "react";
-import {useWhat} from "usewhat";
+import React from 'react';
+import {useWhat} from 'usewhat';
 // THIS IS AN ANTIPATTERN CASE FOR USEWHAT
 // You should note that count namespace is initialized twice
 // as Child component App compoment and its a antipatter to
@@ -314,7 +314,7 @@ function App() {
 }
 
 const Child = () => {
-  const [count, setCount] = useWhat("count", 1);
+  const [count, setCount] = useWhat('count', 1);
 
   return (
     <button
@@ -335,11 +335,11 @@ export default App;
 [**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/fix-for-eg-5-usewhat-npm-packagereadme-wfj0p?file=/src/App.js)
 
 ```js
-import "./styles.css";
-import {useWhat, getWhat} from "usewhat";
+import './styles.css';
+import {useWhat, getWhat} from 'usewhat';
 
 const Child = () => {
-  const [count, setCount] = getWhat("count");
+  const [count, setCount] = getWhat('count');
 
   return (
     <button
@@ -353,7 +353,7 @@ const Child = () => {
 };
 
 export default function App() {
-  useWhat("count", 1); // hoisting the state!
+  useWhat('count', 1); // hoisting the state!
   return (
     <>
       <Child />
