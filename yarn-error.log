@@ -1,0 +1,63 @@
+Arguments: 
+  C:\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js pub
+
+PATH: 
+  C:\msys64\usr\local\bin;C:\msys64\usr\bin;C:\msys64\usr\bin;C:\msys64\opt\bin;C:\msys64\usr\bin;C:\Program Files\ConEmu\ConEmu\Scripts;C:\Program Files\ConEmu;C:\Program Files\ConEmu\ConEmu;C:\Program Files\Java\jdk-11.0.1\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.4.11-hotspot\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Users\chetan\AppData\Local\Android\Sdk\platform-tools;C:\adb;C:\Program Files\PuTTY;C:\Program Files\Amazon\AWSCLI;C:\Program Files\Microsoft\Web Platform Installer;C:\xampp\php;C:\Program Files (x86)\Streamlink\bin;C:\ffmpeg\bin;C:\youtube-dl;C:\ProgramData\chocolatey\bin;C:\newPath;C:\Program Files\Typora;C:\Program Files\Pandoc;C:\Users\chetan\.deno\bin;C:\Program Files (x86)\GnuWin32\bin;C:\Users\chetan\AppData\Roaming\npm;C:\Users\chetan\AppData\Roaming\nvm;C:\nodejs;C:\watchmanbyFB\bin;C:\additionalPath;C:\Users\chetan\Desktop\Rapid Growth\readingFileGeneratingGlobalPackageList;C:\Program Files\Sublime Text 3;C:\msys64\usr\bin;C:\Program Files (x86)\Google\Chrome\Application;C:\Program Files\Git\cmd;C:\Program Files\PowerShell\7-preview\preview;C:\Program Files\Calibre2;C:\Program Files\ISC BIND 9\bin;C:\additionalPath\colortool;C:\Program Files (x86)\Yarn\bin;C:\Program Files\Amazon\AWSCLIV2;C:\Program Files\Redis;C:\Program Files\dotnet;C:\Users\chetan\.cargo\bin;C:\Users\chetan\AppData\Local\Programs\Python\Python39\Scripts;C:\Users\chetan\AppData\Local\Programs\Python\Python39;C:\Users\chetan\scoop\shims;C:\Users\chetan\AppData\Local\Programs\Python\Python38\Scripts;C:\Users\chetan\AppData\Local\Programs\Python\Python38;C:\Ruby26-x64\bin;C:\Program Files\MongoDB\Server\4.0\bin;C:\Users\chetan\AppData\Local\GitHubDesktop\bin;C:\Users\chetan\AppData\Local\atom\bin;C:\Program Files\heroku\bin;C:\Program Files\IPFS Desktop\resources\app.asar.unpacked\out\ipfs-on-path\scripts\bin-win;C:\Users\chetan\AppData\Roaming\nvm;C:\Users\chetan\AppData\Local\hyper\app-3.0.2\resources\bin;C:\Program Files (x86)\GitHub CLI;C:\msys64\usr\local\bin;C:\Users\chetan\AppData\Local\Yarn\bin;C:\Program Files\Docker Toolbox;C:\nginx-1.18.0;C:\nodejs;C:\Program Files\PostgreSQL\13\bin;C:\Users\chetan\AppData\Local\Programs\Microsoft VS Code Insiders\bin;C:\Users\chetan\.dotnet\tools;C:\Program Files\AutoHotkey;C:\msys64\usr\bin\site_perl;C:\msys64\usr\bin\vendor_perl;C:\msys64\usr\bin\core_perl
+
+Yarn version: 
+  1.22.5
+
+Node version: 
+  14.15.4
+
+Platform: 
+  win32 x64
+
+Trace: 
+  SyntaxError: E:\githubrepos\npmjs_packages\usewhat\package.json: Unexpected string in JSON at position 665
+      at JSON.parse (<anonymous>)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:1625:59
+      at Generator.next (<anonymous>)
+      at step (C:\Program Files (x86)\Yarn\lib\cli.js:310:30)
+      at C:\Program Files (x86)\Yarn\lib\cli.js:321:13
+
+npm manifest: 
+  {
+  	"name": "usewhat",
+  	"version": "1.0.37",
+  	"description": "",
+  	"main": "index.js",
+  	"scripts": {
+  		"prepub": "c Pre version commit.",
+  		"pub": "yarn version --patch && yarn publish",
+  		"postpub": "p",
+  		"test": "echo \"Error: no test specified.\" && exit 1"
+  	},
+  	"dependencies": {},
+  	"peerDependencies": {
+  		"react": "^16.0.0 || ^17.0.0"
+  	},
+  	"keywords": [],
+  	"author": "",
+  	"license": "ISC",
+  	"repository": {
+  		"type": "git",
+  		"url": "https://github.com/sahilrajput03/usewhat"
+  	},
+  	"homepage": "https://github.com/sahilrajput03/usewhat",
+  	 "keywords": [
+      "globalstate",
+      "reactstate",
+      "usewhat",
+      "getwhat",
+      "state management",
+      "react"
+      "react state management"
+    ],
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

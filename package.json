@@ -20,5 +20,14 @@
 		"type": "git",
 		"url": "https://github.com/sahilrajput03/usewhat"
 	},
-	"homepage": "https://github.com/sahilrajput03/usewhat"
+	"homepage": "https://github.com/sahilrajput03/usewhat",
+	"keywords": [
+		"globalstate",
+		"reactstate",
+		"usewhat",
+		"getwhat",
+		"state management",
+		"react",
+		"react state management"
+	]
 }
