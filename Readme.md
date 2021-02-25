@@ -375,7 +375,7 @@ export default function App() {
 
 ### Example 8 If you need performace optimization, you can use [memo](https://reactjs.org/docs/react-api.html#reactmemo).
 
-- Also, I would suggest if you should optimise or not your components at all or not: [@stackoverflow question](https://stackoverflow.com/questions/53074551/when-should-you-not-use-react-memo) and [#reactmemo-and-friends: When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback#reactmemo-and-friends).
+- Also, I would suggest if you should optimise your components at all or not: [@stackoverflow question](https://stackoverflow.com/questions/53074551/when-should-you-not-use-react-memo) and [#reactmemo-and-friends: When to useMemo and useCallback](https://kentcdodds.com/blog/usememo-and-usecallback#reactmemo-and-friends).
 
 [**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/optimization-and-usewhatnpm-package-eg-7-81yxv?file=/src/App.js)
 
