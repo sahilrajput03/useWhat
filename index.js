@@ -16,8 +16,6 @@ export const getWhat = (storeName) => {
   return [stateGlobal[storeName], setStateGlobal[storeName]];
 };
 
-// TODO: Add case for throwing error when you initialise useWhat with
-// two same namespaces.
 export const useWhat = (storeName, val) => {
   const [state, setState] = useState({[storeName]: val});
 
