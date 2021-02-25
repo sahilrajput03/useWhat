@@ -288,7 +288,7 @@ const ChildComponent = () => {
 };
 ```
 
-### Bad usage of useWhat
+### Example 5 Bad usage of useWhat
 
 [**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/example-4-usewhat-npmjs-package-readme-lpt9y?file=/src/App.js:83-126)
 
@@ -331,5 +331,38 @@ export default App;
 ```
 
 **Show your support by star the [repo](https://github.com/sahilrajput03/usewhat)**.
+
+### Example 6 (Fix for e.g. 5)
+
+[**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/fix-for-eg-5-usewhat-npm-packagereadme-wfj0p?file=/src/App.js)
+
+```js
+import "./styles.css";
+import {useWhat, getWhat} from "usewhat";
+
+const Child = () => {
+  const [count, setCount] = getWhat("count");
+
+  return (
+    <button
+      onClick={() => {
+        setCount(count + 1);
+      }}
+    >
+      {count}
+    </button>
+  );
+};
+
+export default function App() {
+  useWhat("count", 1); // hoisting the state!
+  return (
+    <>
+      <Child />
+      <Child />
+    </>
+  );
+}
+```
 
 Thanks, for being here.
