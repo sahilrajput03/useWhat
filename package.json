@@ -15,5 +15,10 @@
 	},
 	"keywords": [],
 	"author": "",
-	"license": "ISC"
+	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/sahilrajput03/usewhat"
+	},
+	"homepage": "https://github.com/sahilrajput03/usewhat"
 }

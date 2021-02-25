@@ -330,4 +330,6 @@ const Child = () => {
 export default App;
 ```
 
+**Show your support by star the [repo](https://github.com/sahilrajput03/usewhat)**.
+
 Thanks, for being here.

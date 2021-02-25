@@ -6,7 +6,9 @@ So, does it any matter that where we initialize the `namespace` we got to be car
 
 #### Changelog:
 
-- Added 1.0.30: Added custom error log for trying to access getwhat withou initialising the namespace first(using usewhat api).
+- 1.0.32: Added the github repo linka and homepage link to package.json for npm registry.
+
+- 1.0.30: Added custom error log for trying to access getwhat withou initialising the namespace first(using usewhat api).
 
 - version 1.0.17 includes good namings for if statements and all readable code alterations for conditions, and if else, separations to simple independent if statements with conditions. Yikes!! Also, includes using testing flag (having_val = true) in production, yikes, and now we can have 0 errors like using useWhat('mykey') will create initialValue as undefined just like react does with useState() i.e., calling with no params.
 
