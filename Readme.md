@@ -288,4 +288,46 @@ const ChildComponent = () => {
 };
 ```
 
-Thanks, being here.
+### Bad usage of useWhat
+
+[**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/example-4-usewhat-npmjs-package-readme-lpt9y?file=/src/App.js:83-126)
+
+```js
+import React from "react";
+import {useWhat} from "usewhat";
+// THIS IS AN ANTIPATTERN CASE FOR USEWHAT
+// You should note that count namespace is initialized twice
+// as Child component App compoment and its a antipatter to
+// usage of useWhat.
+
+// SOLUTION: You should host `count` namespace in
+// App component using `useWhat('count', 1)` and utilise `count` in
+// nested components using getWhat api.
+
+function App() {
+  return (
+    <div>
+      <Child />
+      <Child />
+    </div>
+  );
+}
+
+const Child = () => {
+  const [count, setCount] = useWhat("count", 1);
+
+  return (
+    <button
+      onClick={() => {
+        setCount(count + 1);
+      }}
+    >
+      {count}
+    </button>
+  );
+};
+
+export default App;
+```
+
+Thanks, for being here.

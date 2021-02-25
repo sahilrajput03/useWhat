@@ -1,22 +1,30 @@
 /* eslint-disable no-unused-vars */
 import {useCallback, useRef, useState} from "react";
 import {useLocalStorage} from "./useLocalStorage";
-import {myError} from "./utils";
+import {myError, myErrorForNoStore} from "./utils";
+export const log = console.log;
 
 let _stateGlobal = [{}, {}];
 const [stateGlobal, setStateGlobal] = _stateGlobal;
-export const log = console.log;
 
+// DONE: Add case of throwing error when getwhat is called without initializing state.
 export const getWhat = (storeName) => {
+  if (!stateGlobal[storeName]) {
+    return myErrorForNoStore(storeName);
+  }
+
   return [stateGlobal[storeName], setStateGlobal[storeName]];
 };
 
+// TODO: Add case for throwing error when you initialise useWhat with
+// two same namespaces.
 export const useWhat = (storeName, val) => {
   const [state, setState] = useState({[storeName]: val});
 
   // const having_val = val !== undefined;
   const having_val = true; // ? Testing here.
-  const notHaving_val_and_is_new_key = !having_val && !setStateGlobal[storeName];
+  const notHaving_val_and_is_new_key =
+    !having_val && !setStateGlobal[storeName];
 
   if (having_val) {
     //This is the only required case though for the useWhat api to work,
@@ -59,7 +67,6 @@ export const useWhat = (storeName, val) => {
   if (notHaving_val_and_is_new_key) {
     myError(storeName);
   }
-
   // Below return case executes when `not_having_val` && `is_old_key`.// We don't care to use this case though, cause for accessig old keys, we must use getWhat api. Yikes!!
   // return [stateGlobal[storeName], setStateGlobal[storeName]]; // ? Backup
   return [stateGlobal[storeName], setStateGlobal[storeName]]; // ? Testing
@@ -69,7 +76,8 @@ export const useWhatPersistent = (storeName, val) => {
   const [state, setState] = useLocalStorage(storeName, {[storeName]: val});
 
   const having_val = val !== undefined;
-  const notHaving_val_and_is_new_key = !having_val && !setStateGlobal[storeName];
+  const notHaving_val_and_is_new_key =
+    !having_val && !setStateGlobal[storeName];
 
   if (having_val) {
     stateGlobal[storeName] = state[storeName];
