@@ -373,6 +373,15 @@ export default function App() {
 
 **Show your support by star the [repo](https://github.com/sahilrajput03/usewhat)**.
 
+## Why use `useWhat` ?
+
+- Only two apis: useWhat and getWhat.
+- No need to pass props down ever
+- `getWhat` can be called in handler functions as well unlike useState requires you top-level declaration (eslint shit)
+- `getWhat` can be called outside react components, thus fuction callbacks get more neat( as they don't need state to be passed as params, coz they can have their own getWhat inside them )
+- No clutter for maintaing big component trees.
+- Also works for react-native
+
 Thanks, for being here.
 
 ~Sahil Rajput
