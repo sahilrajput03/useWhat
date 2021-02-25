@@ -373,7 +373,69 @@ export default function App() {
 // Code is large to display here, refer above codesnadbox link please!!
 ```
 
-**Show your support by star the [repo](https://github.com/sahilrajput03/usewhat)**.
+### Example 8 If you need performace optimization, you can use [memo](https://reactjs.org/docs/react-api.html#reactmemo).
+
+[**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/optimization-and-usewhatnpm-package-eg-7-81yxv?file=/src/App.js)
+
+```js
+// You can safely remove all the log statements, they are just for learning phase only.
+import {useEffect, memo} from 'react';
+import './styles.css';
+import {useWhat, getWhat} from 'usewhat';
+// You can use wrap any component(FOR OPTIMIZATION) to use last rendered result if its props
+// has not changed, yikes!!
+// Read at react docs: https://reactjs.org/docs/react-api.html#reactmemo
+let log = console.log;
+
+export default function App() {
+  const [count, setCount] = useWhat('count', 1);
+  const [label, setLabel] = useWhat('label', 'Optimized component...');
+
+  return (
+    <div className="App">
+      <h1>Hello CodeSandbox</h1>
+      <button onClick={() => setCount(count + 1)}> incr</button>
+      <button onClick={() => setLabel(Math.random)}> change label</button>
+      <Child1 />
+      {/* <Child2 /> */} {/* ← ← ← ← ← ← non-optimized way  */}
+      <Child2_Optimized label={label} />
+    </div>
+  );
+}
+
+const Child1 = () => {
+  const [count, setCount] = getWhat('count');
+  useEffect(() => {
+    log('Child 1 updated(re-rendered!)');
+  });
+  return <div> Child1 - Count: {count} </div>;
+};
+
+const Child2_Optimized = memo(Child2);
+
+function Child2({label}) {
+  const [count, setCount] = getWhat('count');
+  useEffect(() => {
+    log('Child 2 updated(re-rendered!)');
+  });
+  return (
+    <div>
+      Child2 - Count: {count} {label ?? label}
+      <Child3_Optimized />
+    </div>
+  );
+}
+
+const Child3_Optimized = memo(Child3);
+
+function Child3() {
+  const [count, setCount] = getWhat('count');
+  useEffect(() => {
+    log('Child 3 updated(re-rendered!)');
+  });
+  return <div> Child3 - Count: {count} </div>;
+}
+```
 
 ## Why use `useWhat` ?
 
@@ -383,6 +445,8 @@ export default function App() {
 - `getWhat` can be called outside react components, thus fuction callbacks get more neat( as they don't need state to be passed as params, coz they can have their own getWhat inside them )
 - No clutter for maintaing big component trees.
 - Also works for react-native
+
+**Show your support by star the [repo](https://github.com/sahilrajput03/usewhat)**.
 
 Thanks, for being here.
 
