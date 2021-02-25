@@ -300,7 +300,7 @@ import {useWhat} from "usewhat";
 // as Child component App compoment and its a antipatter to
 // usage of useWhat.
 
-// SOLUTION: You should host `count` namespace in
+// SOLUTION(Refer Example 6): You should host `count` namespace in
 // App component using `useWhat('count', 1)` and utilise `count` in
 // nested components using getWhat api.
 
@@ -361,6 +361,14 @@ export default function App() {
 		</>
 	);
 }
+```
+
+### Example 7 Deeply nesting components
+
+[**Click here to see this example in codesandbox 🔥**](https://codesandbox.io/s/deep-nested-comp-case-usewhat-npm-package-exampleto-be-added-to-readme-puiwo)
+
+```js
+// Code is large to display here, refer above codesnadbox link please!!
 ```
 
 **Show your support by star the [repo](https://github.com/sahilrajput03/usewhat)**.
