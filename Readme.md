@@ -1,5 +1,7 @@
 # `useWhat` - global state management solution
 
+**Before diving into anything in this package read this valuable question @ [stackoverflow](https://stackoverflow.com/questions/40819992/react-parent-component-re-renders-all-children-even-those-that-havent-changed), and you'll understand mostly how useWhat works underneath(though its very simple already!)**.
+
 MOST ASKED QUESTION 😴 :
 
 **Q. What to use for state management in react ?**
